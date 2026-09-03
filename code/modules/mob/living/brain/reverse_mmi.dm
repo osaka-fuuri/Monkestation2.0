@@ -165,6 +165,7 @@
 		mainframe_ai.radio.make_syndie()
 	implant.radio.subspace_transmission = TRUE
 	implant.radio.command = TRUE
+	implant.radio.translate_binary = TRUE
 	implant.radio.channels = mainframe_ai.radio.channels
 	for(var/channel in implant.radio.channels)
 		LAZYSET(implant.radio.secure_radio_connections, channel, add_radio(implant.radio, GLOB.radiochannels[channel]))

@@ -1133,7 +1133,7 @@
 			continue
 		if(ishuman(borgie))
 			var/mob/living/carbon/human/human = borgie
-			if(!HAS_TRAIT(borgie, TRAIT_REVERSE_MMI))
+			if(!HAS_TRAIT(human, TRAIT_REVERSE_MMI))
 				return
 			var/obj/item/organ/internal/brain/cybernetic/ai/brain = human.get_organ_slot(ORGAN_SLOT_BRAIN)
 			// Checks if the AI-uplink is unowned OR ours, and if our body is augmented sufficiently.

@@ -1132,9 +1132,9 @@
 				possible += R
 			continue
 		if(ishuman(borgie))
+			var/mob/living/carbon/human/human = borgie
 			if(!HAS_TRAIT(borgie, TRAIT_REVERSE_MMI))
 				return
-			var/mob/living/carbon/human/human = borgie
 			var/obj/item/organ/internal/brain/cybernetic/ai/brain = human.get_organ_slot(ORGAN_SLOT_BRAIN)
 			// Checks if the AI-uplink is unowned OR ours, and if our body is augmented sufficiently.
 			if(brain.check_if_augmented() && human.stat != DEAD && (brain.mainframe_ai == null || brain.mainframe_ai == src))

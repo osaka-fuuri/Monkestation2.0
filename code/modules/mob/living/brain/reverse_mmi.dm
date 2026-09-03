@@ -37,7 +37,7 @@
 /obj/item/organ/internal/brain/cybernetic/ai/on_insert(mob/living/carbon/organ_owner, special, movement_flags)
 	. = ..()
 	organ_owner.faction |= FACTION_SILICON // we are of siliconkind
-	organ_owner.add_traits(list(TRAIT_MEDICAL_HUD, TRAIT_NO_MINDSWAP, TRAIT_CORPSELOCKED), REF(src))
+	organ_owner.add_traits(list(TRAIT_REVERSE_MMI ,TRAIT_MEDICAL_HUD, TRAIT_NO_MINDSWAP, TRAIT_CORPSELOCKED), REF(src))
 	update_med_hud_status(organ_owner)
 	RegisterSignal(organ_owner, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(update_med_hud_status))
 	RegisterSignal(organ_owner, COMSIG_CLICK, PROC_REF(owner_clicked))
@@ -64,7 +64,7 @@
 	GLOB.available_ai_shells -= organ_owner
 	undeploy()
 	mainframe_ai = null
-	organ_owner.remove_traits(list(TRAIT_MEDICAL_HUD, TRAIT_NO_MINDSWAP, TRAIT_CORPSELOCKED), REF(src))
+	organ_owner.remove_traits(list(TRAIT_REVERSE_MMI, TRAIT_MEDICAL_HUD, TRAIT_NO_MINDSWAP, TRAIT_CORPSELOCKED), REF(src))
 	UnregisterSignal(organ_owner, list(COMSIG_LIVING_HEALTH_UPDATE, COMSIG_CLICK, COMSIG_MOB_GET_STATUS_TAB_ITEMS, COMSIG_QDELETING, COMSIG_LIVING_PRE_WABBAJACKED, COMSIG_CARBON_GAIN_ORGAN, COMSIG_CARBON_LOSE_ORGAN))
 	var/obj/item/implant/radio/radio = radio_weakref?.resolve()
 	if(radio)

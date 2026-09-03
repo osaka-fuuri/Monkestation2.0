@@ -36,6 +36,7 @@
 
 /obj/item/organ/internal/brain/cybernetic/ai/on_insert(mob/living/carbon/organ_owner, special, movement_flags)
 	. = ..()
+	organ_owner.faction |= FACTION_SILICON // we are of siliconkind
 	organ_owner.add_traits(list(TRAIT_MEDICAL_HUD, TRAIT_NO_MINDSWAP, TRAIT_CORPSELOCKED), REF(src))
 	update_med_hud_status(organ_owner)
 	RegisterSignal(organ_owner, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(update_med_hud_status))
@@ -57,6 +58,7 @@
 	. = ..()
 
 /obj/item/organ/internal/brain/cybernetic/ai/on_remove(mob/living/carbon/organ_owner, special, movement_flags)
+	organ_owner.faction -= FACTION_SILICON
 	if(mainframe_ai)
 		mainframe_ai.connected_ipcs -= organ_owner
 	GLOB.available_ai_shells -= organ_owner
